@@ -16,6 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        if let window = self.window {
+            window.rootViewController = WelcomePageVC()
+            window.makeKeyAndVisible()
+        }
+        return true
+        
 //        func isAppAlreadyLaunchedOnce()->Bool{
 //            let defaults = UserDefaults.standard
 //            if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){

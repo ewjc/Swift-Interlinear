@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  WelcomePageOne.swift
 //  Swift-Interlinear
 //
 //  Created by Eric Wong on 11/17/18.
@@ -8,13 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class WelcomePageOne: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .blue
+        
     }
-
-
+    
 }
-

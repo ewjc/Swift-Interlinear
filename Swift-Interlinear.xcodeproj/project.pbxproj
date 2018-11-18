@@ -8,22 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		09C1A40B21A0B3E700F5D2EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A40A21A0B3E700F5D2EE /* AppDelegate.swift */; };
-		09C1A40D21A0B3E700F5D2EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A40C21A0B3E700F5D2EE /* ViewController.swift */; };
+		09C1A40D21A0B3E700F5D2EE /* WelcomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A40C21A0B3E700F5D2EE /* WelcomePageVC.swift */; };
 		09C1A41021A0B3E700F5D2EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C1A40E21A0B3E700F5D2EE /* Main.storyboard */; };
 		09C1A41221A0B3E800F5D2EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09C1A41121A0B3E800F5D2EE /* Assets.xcassets */; };
 		09C1A41521A0B3E800F5D2EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C1A41321A0B3E800F5D2EE /* LaunchScreen.storyboard */; };
 		09C1A41E21A0F51500F5D2EE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A41D21A0F51500F5D2EE /* Extensions.swift */; };
+		09C1A42021A0FAEC00F5D2EE /* WelcomePageOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A41F21A0FAEC00F5D2EE /* WelcomePageOne.swift */; };
+		09C1A42421A1021900F5D2EE /* WelcomePageTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A42321A1021900F5D2EE /* WelcomePageTwo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		09C1A40721A0B3E700F5D2EE /* Swift-Interlinear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-Interlinear.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09C1A40A21A0B3E700F5D2EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		09C1A40C21A0B3E700F5D2EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		09C1A40C21A0B3E700F5D2EE /* WelcomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageVC.swift; sourceTree = "<group>"; };
 		09C1A40F21A0B3E700F5D2EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		09C1A41121A0B3E800F5D2EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09C1A41421A0B3E800F5D2EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09C1A41621A0B3E800F5D2EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09C1A41D21A0F51500F5D2EE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		09C1A41F21A0FAEC00F5D2EE /* WelcomePageOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageOne.swift; sourceTree = "<group>"; };
+		09C1A42321A1021900F5D2EE /* WelcomePageTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageTwo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +62,13 @@
 			children = (
 				09C1A41C21A0F3A000F5D2EE /* Utils + Extensions */,
 				09C1A40A21A0B3E700F5D2EE /* AppDelegate.swift */,
-				09C1A40C21A0B3E700F5D2EE /* ViewController.swift */,
+				09C1A40C21A0B3E700F5D2EE /* WelcomePageVC.swift */,
 				09C1A40E21A0B3E700F5D2EE /* Main.storyboard */,
 				09C1A41121A0B3E800F5D2EE /* Assets.xcassets */,
 				09C1A41321A0B3E800F5D2EE /* LaunchScreen.storyboard */,
 				09C1A41621A0B3E800F5D2EE /* Info.plist */,
+				09C1A41F21A0FAEC00F5D2EE /* WelcomePageOne.swift */,
+				09C1A42321A1021900F5D2EE /* WelcomePageTwo.swift */,
 			);
 			path = "Swift-Interlinear";
 			sourceTree = "<group>";
@@ -146,8 +152,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09C1A40D21A0B3E700F5D2EE /* ViewController.swift in Sources */,
+				09C1A40D21A0B3E700F5D2EE /* WelcomePageVC.swift in Sources */,
 				09C1A41E21A0F51500F5D2EE /* Extensions.swift in Sources */,
+				09C1A42021A0FAEC00F5D2EE /* WelcomePageOne.swift in Sources */,
+				09C1A42421A1021900F5D2EE /* WelcomePageTwo.swift in Sources */,
 				09C1A40B21A0B3E700F5D2EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
