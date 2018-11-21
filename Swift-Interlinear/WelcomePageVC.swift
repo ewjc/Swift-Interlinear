@@ -34,11 +34,14 @@ class WelcomePageVC: UIPageViewController {
     }
     
     fileprivate func configurePageControl() {
+        let pageFrame = CGRect(x: 0, y: UIScreen.main.bounds.maxY - 50, width: UIScreen.main.bounds.width, height: 50)
+        pageControl.frame = pageFrame
+        pageControl.currentPage = 0
+        pageControl.numberOfPages = orderedViewControllers.count
         pageControl.currentPageIndicatorTintColor = UIColor.black
         pageControl.pageIndicatorTintColor = UIColor.lightGray
-        
         view.addSubview(pageControl)
-        pageControl.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 40, paddingBottom: -10, paddingRight: 40, width: 0, height: 0)
+
     }
     
 }
@@ -69,15 +72,15 @@ extension WelcomePageVC: UIPageViewControllerDelegate, UIPageViewControllerDataS
 
         
     }
-//
-//    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-//
-//        // set the pageControl.currentPage to the index of the current viewController in pages
-//        if let viewControllers = pageViewController.viewControllers {
-//            if let viewControllerIndex = self.orderedViewControllers.index(of: viewControllers[0]) {
-//                self.pageControl.currentPage = viewControllerIndex
-//            }
-//        }
-//    }
+
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+
+        // set the pageControl.currentPage to the index of the current viewController in pages
+        guard let viewControllers = pageViewController.viewControllers else { return }
+        
+            if let viewControllerIndex = self.orderedViewControllers.index(of: viewControllers[0]) {
+                self.pageControl.currentPage = viewControllerIndex
+            }
+    }
 }
 

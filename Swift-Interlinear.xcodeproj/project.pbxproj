@@ -16,6 +16,7 @@
 		09C1A42021A0FAEC00F5D2EE /* WelcomePageOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A41F21A0FAEC00F5D2EE /* WelcomePageOne.swift */; };
 		09C1A42421A1021900F5D2EE /* WelcomePageTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A42321A1021900F5D2EE /* WelcomePageTwo.swift */; };
 		09C1A42621A11D7A00F5D2EE /* WelcomePageThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A42521A11D7A00F5D2EE /* WelcomePageThree.swift */; };
+		09C1A42921A4F7ED00F5D2EE /* GreekTagged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A42821A4F7ED00F5D2EE /* GreekTagged.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		09C1A41F21A0FAEC00F5D2EE /* WelcomePageOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageOne.swift; sourceTree = "<group>"; };
 		09C1A42321A1021900F5D2EE /* WelcomePageTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageTwo.swift; sourceTree = "<group>"; };
 		09C1A42521A11D7A00F5D2EE /* WelcomePageThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageThree.swift; sourceTree = "<group>"; };
+		09C1A42821A4F7ED00F5D2EE /* GreekTagged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreekTagged.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,8 @@
 		09C1A40921A0B3E700F5D2EE /* Swift-Interlinear */ = {
 			isa = PBXGroup;
 			children = (
+				09C1A42821A4F7ED00F5D2EE /* GreekTagged.swift */,
+				09C1A42721A12F4400F5D2EE /* Welcome Pages */,
 				09C1A41C21A0F3A000F5D2EE /* Utils + Extensions */,
 				09C1A40A21A0B3E700F5D2EE /* AppDelegate.swift */,
 				09C1A40C21A0B3E700F5D2EE /* WelcomePageVC.swift */,
@@ -69,9 +73,6 @@
 				09C1A41121A0B3E800F5D2EE /* Assets.xcassets */,
 				09C1A41321A0B3E800F5D2EE /* LaunchScreen.storyboard */,
 				09C1A41621A0B3E800F5D2EE /* Info.plist */,
-				09C1A41F21A0FAEC00F5D2EE /* WelcomePageOne.swift */,
-				09C1A42321A1021900F5D2EE /* WelcomePageTwo.swift */,
-				09C1A42521A11D7A00F5D2EE /* WelcomePageThree.swift */,
 			);
 			path = "Swift-Interlinear";
 			sourceTree = "<group>";
@@ -82,6 +83,16 @@
 				09C1A41D21A0F51500F5D2EE /* Extensions.swift */,
 			);
 			path = "Utils + Extensions";
+			sourceTree = "<group>";
+		};
+		09C1A42721A12F4400F5D2EE /* Welcome Pages */ = {
+			isa = PBXGroup;
+			children = (
+				09C1A41F21A0FAEC00F5D2EE /* WelcomePageOne.swift */,
+				09C1A42321A1021900F5D2EE /* WelcomePageTwo.swift */,
+				09C1A42521A11D7A00F5D2EE /* WelcomePageThree.swift */,
+			);
+			path = "Welcome Pages";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +169,7 @@
 				09C1A40D21A0B3E700F5D2EE /* WelcomePageVC.swift in Sources */,
 				09C1A41E21A0F51500F5D2EE /* Extensions.swift in Sources */,
 				09C1A42621A11D7A00F5D2EE /* WelcomePageThree.swift in Sources */,
+				09C1A42921A4F7ED00F5D2EE /* GreekTagged.swift in Sources */,
 				09C1A42021A0FAEC00F5D2EE /* WelcomePageOne.swift in Sources */,
 				09C1A42421A1021900F5D2EE /* WelcomePageTwo.swift in Sources */,
 				09C1A40B21A0B3E700F5D2EE /* AppDelegate.swift in Sources */,
