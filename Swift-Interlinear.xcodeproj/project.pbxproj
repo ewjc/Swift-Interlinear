@@ -10,6 +10,7 @@
 		0917271C21A4FB970095C804 /* sampleTestament.js in Resources */ = {isa = PBXBuildFile; fileRef = 0917271B21A4FB970095C804 /* sampleTestament.js */; };
 		0917271E21A511A90095C804 /* WelcomePageFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0917271D21A511A90095C804 /* WelcomePageFour.swift */; };
 		0917272021A514870095C804 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0917271F21A514870095C804 /* MenuVC.swift */; };
+		0917272221A51AFE0095C804 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0917272121A51AFE0095C804 /* MenuCell.swift */; };
 		09C1A40B21A0B3E700F5D2EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A40A21A0B3E700F5D2EE /* AppDelegate.swift */; };
 		09C1A40D21A0B3E700F5D2EE /* WelcomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A40C21A0B3E700F5D2EE /* WelcomePageVC.swift */; };
 		09C1A41021A0B3E700F5D2EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C1A40E21A0B3E700F5D2EE /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		0917271B21A4FB970095C804 /* sampleTestament.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sampleTestament.js; sourceTree = "<group>"; };
 		0917271D21A511A90095C804 /* WelcomePageFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageFour.swift; sourceTree = "<group>"; };
 		0917271F21A514870095C804 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		0917272121A51AFE0095C804 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		09C1A40721A0B3E700F5D2EE /* Swift-Interlinear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-Interlinear.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09C1A40A21A0B3E700F5D2EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09C1A40C21A0B3E700F5D2EE /* WelcomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageVC.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				09C1A41121A0B3E800F5D2EE /* Assets.xcassets */,
 				09C1A41321A0B3E800F5D2EE /* LaunchScreen.storyboard */,
 				09C1A41621A0B3E800F5D2EE /* Info.plist */,
+				0917272121A51AFE0095C804 /* MenuCell.swift */,
 			);
 			path = "Swift-Interlinear";
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				09C1A42921A4F7ED00F5D2EE /* GreekTagged.swift in Sources */,
 				09C1A42021A0FAEC00F5D2EE /* WelcomePageOne.swift in Sources */,
 				0917272021A514870095C804 /* MenuVC.swift in Sources */,
+				0917272221A51AFE0095C804 /* MenuCell.swift in Sources */,
 				0917271E21A511A90095C804 /* WelcomePageFour.swift in Sources */,
 				09C1A42421A1021900F5D2EE /* WelcomePageTwo.swift in Sources */,
 				09C1A40B21A0B3E700F5D2EE /* AppDelegate.swift in Sources */,
