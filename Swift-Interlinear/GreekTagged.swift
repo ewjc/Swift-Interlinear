@@ -12,7 +12,13 @@ import JavaScriptCore
 class GreekTagged: UIViewController {
     var jsContext: JSContext!
     
-    func initializeJS() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.initializeJS()
+        self.getGreekNewTestament()
+    }
+    
+    fileprivate func initializeJS() {
         self.jsContext = JSContext()
         
         if let jsSourcePath = Bundle.main.path(forResource: "GreekTagged", ofType: "js") {
@@ -25,13 +31,14 @@ class GreekTagged: UIViewController {
                 print(error.localizedDescription)
             }
         }
-        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    fileprivate func getGreekNewTestament() {
+        if let variable = self.jsContext.objectForKeyedSubscript("newTestament") {
+            print(variable.toString())
+        }
     }
-    
+
 }
 
 
