@@ -14,8 +14,9 @@ class WelcomePageVC: UIPageViewController {
         let vcOne = WelcomePageOne()
         let vcTwo = WelcomePageTwo()
         let vcThree = WelcomePageThree()
+        let vcFour = WelcomePageFour()
 
-        return [vcOne, vcTwo, vcThree]
+        return [vcOne, vcTwo, vcThree, vcFour]
     }()
     
     let pageControl = UIPageControl()

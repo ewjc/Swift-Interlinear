@@ -1,5 +1,5 @@
 
-var newTestament = {"Matthew" : ["hello", "newb"]};
+var newTestament = {"Matthew" : [[['Βίβλος', 'newb'],['Χριστοῦ','G5547']],[['γενέσεως','G1078'],['Δαυεὶδ','G1138']]]};
 
 
 //var newTestament = {

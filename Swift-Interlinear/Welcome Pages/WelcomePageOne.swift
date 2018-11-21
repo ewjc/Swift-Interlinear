@@ -18,7 +18,7 @@ class WelcomePageOne: UIViewController {
         
         self.view.backgroundColor = .white
         self.initializeJS()
-        self.getGreekNewTestament()
+        self.getGreekChapter()
     }
     
     fileprivate func initializeJS() {
@@ -36,9 +36,10 @@ class WelcomePageOne: UIViewController {
         }
     }
     
-    fileprivate func getGreekNewTestament() {
-        if let variable = self.jsContext.objectForKeyedSubscript("newTestament") {
-            print(variable.objectForKeyedSubscript("Matthew"))
-        }
+    fileprivate func getGreekChapter() {
+        guard let variable = self.jsContext.objectForKeyedSubscript("newTestament") else { return }
+    print(variable.objectForKeyedSubscript("Matthew")?.objectAtIndexedSubscript(0)!.objectAtIndexedSubscript(1)!)
+            
+        print(variable.objectForKeyedSubscript("Matthew")?.objectAtIndexedSubscript(1)!)
     }
 }
