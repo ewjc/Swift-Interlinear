@@ -21,7 +21,7 @@ class GreekTagged: UIViewController {
     fileprivate func initializeJS() {
         self.jsContext = JSContext()
         
-        if let jsSourcePath = Bundle.main.path(forResource: "GreekTagged", ofType: "js") {
+        if let jsSourcePath = Bundle.main.path(forResource: "GNT", ofType: "json") {
             do {
                 _ = try String(contentsOfFile: jsSourcePath)
                 
@@ -34,7 +34,7 @@ class GreekTagged: UIViewController {
     }
     
     fileprivate func getGreekNewTestament() {
-        if let variable = self.jsContext.objectForKeyedSubscript("newTestament") {
+        if let variable = self.jsContext.objectForKeyedSubscript("result") {
             print(variable.toString())
         }
     }

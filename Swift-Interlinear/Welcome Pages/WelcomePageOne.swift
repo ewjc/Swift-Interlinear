@@ -24,7 +24,7 @@ class WelcomePageOne: UIViewController {
     fileprivate func initializeJS() {
         self.jsContext = JSContext()
         
-        if let jsSourcePath = Bundle.main.path(forResource: "sampleTestament", ofType: "js") {
+        if let jsSourcePath = Bundle.main.path(forResource: "GNT", ofType: "json") {
             do {
                 let jsSourceContents = try String(contentsOfFile: jsSourcePath)
                 
