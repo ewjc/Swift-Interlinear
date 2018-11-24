@@ -37,9 +37,10 @@ class WelcomePageOne: UIViewController {
     }
     
     fileprivate func getGreekChapter() {
-        guard let variable = self.jsContext.objectForKeyedSubscript("newTestament") else { return }
-    print(variable.objectForKeyedSubscript("Matthew")?.objectAtIndexedSubscript(0)!.objectAtIndexedSubscript(1)!)
-            
-        print(variable.objectForKeyedSubscript("Matthew")?.objectAtIndexedSubscript(1)!)
+        guard let variable = self.jsContext.objectForKeyedSubscript("result") else { return }
+        print(variable)
+//    print(variable.objectForKeyedSubscript("Matthew")?.objectAtIndexedSubscript(0)!.objectAtIndexedSubscript(1)!)
+//
+//        print(variable.objectForKeyedSubscript("Matthew")?.objectAtIndexedSubscript(1)!)
     }
 }
