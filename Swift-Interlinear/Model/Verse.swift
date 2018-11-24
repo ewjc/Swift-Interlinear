@@ -18,5 +18,4 @@ class Verse {
         self.chapterNumber = chapterNumber
         self.verses = verses
     }
-    
 }
