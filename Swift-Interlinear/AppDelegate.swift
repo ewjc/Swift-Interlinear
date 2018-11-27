@@ -18,10 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         if let window = self.window {
-            window.rootViewController = WelcomePageVC()
+            window.rootViewController = GreekTagged()
             window.makeKeyAndVisible()
         }
-        return true
         
 //        func isAppAlreadyLaunchedOnce()->Bool{
 //            let defaults = UserDefaults.standard

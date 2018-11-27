@@ -10,22 +10,24 @@ import UIKit
 import JavaScriptCore
 
 class GreekTagged: UIViewController {
+    
     var jsContext: JSContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         self.initializeJS()
-        self.getGreekNewTestament()
+        self.getGreekChapter()
     }
     
     fileprivate func initializeJS() {
         self.jsContext = JSContext()
         
-        if let jsSourcePath = Bundle.main.path(forResource: "GNT", ofType: "json") {
+        if let jsSourcePath = Bundle.main.path(forResource: "FirstHalf", ofType: "json") {
             do {
-                _ = try String(contentsOfFile: jsSourcePath)
+                let jsSourceContents = try String(contentsOfFile: jsSourcePath)
                 
-                self.jsContext.evaluateScript(jsSourcePath)
+                self.jsContext.evaluateScript(jsSourceContents)
             }
             catch {
                 print(error.localizedDescription)
@@ -33,10 +35,12 @@ class GreekTagged: UIViewController {
         }
     }
     
-    fileprivate func getGreekNewTestament() {
-        if let variable = self.jsContext.objectForKeyedSubscript("result") {
-            print(variable.toString())
-        }
+    fileprivate func getGreekChapter() {
+        guard let variable = self.jsContext.objectForKeyedSubscript("matthewArray") else { return }
+        print(variable.atIndex(1))
+        //    print(variable.objectForKeyedSubscript("Matthew")?.objectAtIndexedSubscript(0)!.objectAtIndexedSubscript(1)!)
+        //
+        //        print(variable.objectForKeyedSubscript("Matthew")?.objectAtIndexedSubscript(1)!)
     }
 
 }
