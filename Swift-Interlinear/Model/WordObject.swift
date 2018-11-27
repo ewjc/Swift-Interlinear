@@ -15,13 +15,18 @@ class WordObject {
     var englishRendering: String
     var verseChapter: Int
     var verseNumber: Int
+    var punctuation: String
+    var morphology: String
     
-    init(greekOrHebrewWord: String, phonetic: String, strongsNumber: String, englishRendering: String, verseChapter: Int, verseNumber: Int) {
+    init(greekOrHebrewWord: String, phonetic: String, strongsNumber: String, englishRendering: String, verseChapter: Int, verseNumber: Int, punctuation: String, morphology: String) {
+        
         self.greekOrHebrewWord = greekOrHebrewWord
         self.phonetic = phonetic
         self.strongsNumber = strongsNumber
         self.englishRendering = englishRendering
         self.verseChapter = verseChapter
         self.verseNumber = verseNumber
+        self.punctuation = punctuation
+        self.morphology = morphology
     }
 }
