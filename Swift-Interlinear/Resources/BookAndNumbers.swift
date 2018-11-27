@@ -9,8 +9,7 @@
 import Foundation
 
 class BookAndNumbers {
-    static let bookAndNumbers: [String] = [
-        "Introduction",
+    static let books: [String] = [
         "Genesis",
         "Leviticus",
         "Numbers",
