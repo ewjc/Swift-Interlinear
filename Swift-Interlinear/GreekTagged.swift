@@ -25,7 +25,7 @@ class GreekTagged: UICollectionViewController {
         super.viewDidLoad()
         
         collectionView!.register(WordObjectCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView.backgroundColor = .blue
+        collectionView.backgroundColor = .white
         
         self.initializeJS()
         self.getGreekChapter()
@@ -80,19 +80,26 @@ class GreekTagged: UICollectionViewController {
 
 extension GreekTagged: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return matthewArray.count - 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        var width = 100
         let item = matthewArray[indexPath.item]
+        let originalWordWidth = item.greekOrHebrewWord.width(withConstrainedHeight: 12, font: UIFont.systemFont(ofSize: 12))
+        let englishWordWidth = item.englishRendering.width(withConstrainedHeight: 10, font: UIFont.systemFont(ofSize: 10))
+        let phoneticWordWidth = item.phonetic.width(withConstrainedHeight: 10, font: UIFont.systemFont(ofSize: 10))
         
-        let englishWordWidth = item.englishRendering.width(withConstrainedHeight: 14, font: UIFont.systemFont(ofSize: 10))
-        let originalWordWidth = item.greekOrHebrewWord.width(withConstrainedHeight: 12, font: 12)
+        if originalWordWidth >= englishWordWidth && originalWordWidth >= phoneticWordWidth {
+            width = Int(originalWordWidth)
+        } else if englishWordWidth >= originalWordWidth && englishWordWidth >= phoneticWordWidth {
+            width = Int(englishWordWidth)
+        } else if phoneticWordWidth >= originalWordWidth && phoneticWordWidth >= englishWordWidth {
+            width = Int(phoneticWordWidth)
+        }
         
-        print(englishWordWidth)
-        
-        let size = CGSize(width: 100, height: 60)
+        let size = CGSize(width: width + 10, height: 60)
 
         return size
     }
