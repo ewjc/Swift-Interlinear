@@ -85,8 +85,15 @@ extension GreekTagged: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let size = CGSize(width: 200, height: 60)
+        let item = matthewArray[indexPath.item]
         
+        let englishWordWidth = item.englishRendering.width(withConstrainedHeight: 14, font: UIFont.systemFont(ofSize: 10))
+        let originalWordWidth = item.greekOrHebrewWord.width(withConstrainedHeight: 12, font: 12)
+        
+        print(englishWordWidth)
+        
+        let size = CGSize(width: 100, height: 60)
+
         return size
     }
     

@@ -50,11 +50,11 @@ class WordObjectCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.addSubview(originalWordLabel)
-        originalWordLabel.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 7, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        originalWordLabel.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         originalWordLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         self.addSubview(phoneticLabel)
-        phoneticLabel.anchor(top: originalWordLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 2, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        phoneticLabel.anchor(top: originalWordLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 3, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         phoneticLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         self.addSubview(englishRenderedWordLabel)
