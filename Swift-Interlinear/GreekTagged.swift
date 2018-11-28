@@ -9,29 +9,29 @@
 import UIKit
 import JavaScriptCore
 
-class GreekTagged: UIViewController {
+private let reuseIdentifier = "Cell"
+
+class GreekTagged: UICollectionViewController {
     
     var matthewArray = [WordObject]()
-    
-    var textView: UITextView = {
-        let tv = UITextView()
-        tv.text = ""
-        tv.textColor = .black
-        tv.font = UIFont.systemFont(ofSize: 10)
-        
-        return tv
-    }()
+    var greekTexts: String?
     
     var jsContext: JSContext!
     
+    fileprivate func setupTextView() {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        
+        collectionView!.register(WordObjectCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.backgroundColor = .blue
+        
         self.initializeJS()
         self.getGreekChapter()
+        self.appendToMainText()
         
-        view.addSubview(textView)
-        textView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height: 0)
+        
     }
     
     fileprivate func initializeJS() {
@@ -68,12 +68,36 @@ class GreekTagged: UIViewController {
             
             matthewArray.append(wordObject)
         }
-        
-        //    print(variable.objectForKeyedSubscript("Matthew")?.objectAtIndexedSubscript(0)!.objectAtIndexedSubscript(1)!)
-        //
-        //        print(variable.objectForKeyedSubscript("Matthew")?.objectAtIndexedSubscript(1)!)
     }
+    
+    fileprivate func appendToMainText() {
+        var totalText = [String]()
+        for originalWord in matthewArray {
+            totalText.append("\(originalWord.englishRendering) ")
+        }
+    }
+}
 
+extension GreekTagged: UICollectionViewDelegateFlowLayout {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let size = CGSize(width: 200, height: 60)
+        
+        return size
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! WordObjectCell
+        
+        cell.wordObject = matthewArray[indexPath.item]
+        
+        return cell
+    }
+    
 }
 
 

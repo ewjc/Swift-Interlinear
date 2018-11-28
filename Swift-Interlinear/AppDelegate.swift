@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         if let window = self.window {
-            window.rootViewController = GreekTagged()
+            window.rootViewController = GreekTagged(collectionViewLayout: UICollectionViewFlowLayout())
             window.makeKeyAndVisible()
         }
         
