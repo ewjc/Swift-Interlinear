@@ -24,8 +24,8 @@ class WordObjectCell: UICollectionViewCell {
     
     let originalWordLabel: UILabel = {
        let lbl = UILabel()
-        lbl.textColor = UIColor.darkGray
-        lbl.font = UIFont.boldSystemFont(ofSize: 12)
+        lbl.textColor = UIColor.rgb(148, 126, 33)
+        lbl.font = UIFont.boldSystemFont(ofSize: 14)
         
         return lbl
     }()
@@ -33,15 +33,16 @@ class WordObjectCell: UICollectionViewCell {
     let englishRenderedWordLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = UIColor.black
-        lbl.font = UIFont.systemFont(ofSize: 10)
+        lbl.font = UIFont.systemFont(ofSize: 12)
         
         return lbl
     }()
     
     let phoneticLabel: UILabel = {
         let lbl = UILabel()
-        lbl.textColor = UIColor.darkGray
-        lbl.font = UIFont.systemFont(ofSize: 10)
+//        lbl.textColor = UIColor.darkGray
+        lbl.textColor = UIColor.rgb(59, 85, 21)
+        lbl.font = UIFont.systemFont(ofSize: 12)
         
         return lbl
     }()

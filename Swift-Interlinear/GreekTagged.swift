@@ -83,13 +83,22 @@ extension GreekTagged: UICollectionViewDelegateFlowLayout {
         return matthewArray.count - 1
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let displayVC = WordObjectDisplayVC()
+        self.present(displayVC, animated: true, completion: nil)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         var width = 100
         let item = matthewArray[indexPath.item]
-        let originalWordWidth = item.greekOrHebrewWord.width(withConstrainedHeight: 12, font: UIFont.systemFont(ofSize: 12))
-        let englishWordWidth = item.englishRendering.width(withConstrainedHeight: 10, font: UIFont.systemFont(ofSize: 10))
-        let phoneticWordWidth = item.phonetic.width(withConstrainedHeight: 10, font: UIFont.systemFont(ofSize: 10))
+        let originalWordWidth = item.greekOrHebrewWord.width(withConstrainedHeight: 14, font: UIFont.systemFont(ofSize: 14))
+        let englishWordWidth = item.englishRendering.width(withConstrainedHeight: 12, font: UIFont.systemFont(ofSize: 12))
+        let phoneticWordWidth = item.phonetic.width(withConstrainedHeight: 12, font: UIFont.systemFont(ofSize: 12))
         
         if originalWordWidth >= englishWordWidth && originalWordWidth >= phoneticWordWidth {
             width = Int(originalWordWidth)
@@ -99,7 +108,7 @@ extension GreekTagged: UICollectionViewDelegateFlowLayout {
             width = Int(phoneticWordWidth)
         }
         
-        let size = CGSize(width: width + 10, height: 60)
+        let size = CGSize(width: width, height: 60)
 
         return size
     }
