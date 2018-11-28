@@ -25,13 +25,15 @@ class WordObjectCell: UICollectionViewCell {
     let originalWordLabel: UILabel = {
        let lbl = UILabel()
         lbl.textColor = UIColor.darkGray
+        lbl.font = UIFont.boldSystemFont(ofSize: 12)
         
         return lbl
     }()
     
     let englishRenderedWordLabel: UILabel = {
         let lbl = UILabel()
-        lbl.textColor = UIColor.yellow
+        lbl.textColor = UIColor.black
+        lbl.font = UIFont.systemFont(ofSize: 10)
         
         return lbl
     }()
@@ -39,6 +41,7 @@ class WordObjectCell: UICollectionViewCell {
     let phoneticLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = UIColor.darkGray
+        lbl.font = UIFont.systemFont(ofSize: 10)
         
         return lbl
     }()
@@ -47,12 +50,18 @@ class WordObjectCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.addSubview(originalWordLabel)
-        originalWordLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        originalWordLabel.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 7, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        originalWordLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
+        self.addSubview(phoneticLabel)
+        phoneticLabel.anchor(top: originalWordLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 2, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        phoneticLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         self.addSubview(englishRenderedWordLabel)
-        englishRenderedWordLabel.anchor(top: originalWordLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 0)
+        englishRenderedWordLabel.anchor(top: phoneticLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 2, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 0, height: 0)
+        englishRenderedWordLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
-        self.backgroundColor = UIColor.yellow
+        self.backgroundColor = UIColor.white
     }
     
     required init?(coder aDecoder: NSCoder) {
