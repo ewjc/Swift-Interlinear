@@ -89,6 +89,7 @@ extension GreekTagged: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let displayVC = WordObjectDisplayVC()
+        displayVC.wordObject = matthewArray[indexPath.item]
         displayVC.modalPresentationStyle = .overFullScreen
         self.present(displayVC, animated: true, completion: nil)
     }
