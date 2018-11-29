@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         if let window = self.window {
-            window.rootViewController = GreekTagged(collectionViewLayout: UICollectionViewFlowLayout())
+            window.rootViewController = LoadBook(collectionViewLayout: UICollectionViewFlowLayout())
             window.makeKeyAndVisible()
         }
         

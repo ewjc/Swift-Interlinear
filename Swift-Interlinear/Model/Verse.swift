@@ -9,13 +9,9 @@
 import Foundation
 
 class Verse {
-    var bookNumber : Int
-    var chapterNumber : Int
-    var verses : [WordObject]
+    var verse: [WordObject]?
     
-    init(bookNumber: Int, chapterNumber: Int, verses: [WordObject]) {
-        self.bookNumber = bookNumber
-        self.chapterNumber = chapterNumber
-        self.verses = verses
+    init(verse: [WordObject]) {
+        self.verse = verse
     }
 }

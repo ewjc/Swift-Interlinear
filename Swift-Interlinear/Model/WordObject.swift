@@ -9,6 +9,7 @@
 import Foundation
 
 class WordObject {
+    
     var greekOrHebrewWord: String
     var phonetic: String
     var strongsNumber: String

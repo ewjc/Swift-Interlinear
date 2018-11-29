@@ -15,10 +15,13 @@ class WordObjectCell: UICollectionViewCell {
             guard let originalWord = wordObject?.greekOrHebrewWord else { return }
             guard let englishWord = wordObject?.englishRendering else { return }
             guard let phonetic = wordObject?.phonetic else { return }
+
             
             originalWordLabel.text = originalWord
-            englishRenderedWordLabel.text = englishWord
             phoneticLabel.text = phonetic
+            englishRenderedWordLabel.text = englishWord
+            
+            
         }
     }
     

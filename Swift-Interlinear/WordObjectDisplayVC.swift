@@ -15,10 +15,14 @@ class WordObjectDisplayVC: UIViewController {
             guard let originalWord = wordObject?.greekOrHebrewWord else { return }
             guard let englishWord = wordObject?.englishRendering else { return }
             guard let phonetic = wordObject?.phonetic else { return }
+            guard let strongsNumber = wordObject?.strongsNumber else { return }
+            guard let morphology = wordObject?.morphology else { return }
             
             originalWordLabel.text = originalWord
-            englishRenderedWordLabel.text = englishWord
-            phoneticLabel.text = phonetic
+            englishRenderedWordLabel.text = "English: \(englishWord)"
+            phoneticLabel.text = "Phonetic: \(phonetic)"
+            strongsNumberLabel.text = "Strongs #: \(strongsNumber)"
+            morphologyLabel.text = "Morphology: \(morphology)"
         }
     }
     
@@ -32,7 +36,7 @@ class WordObjectDisplayVC: UIViewController {
     
     let grayView: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor(white: 0.3, alpha: 0.7)
+        v.backgroundColor = UIColor(white: 0.1, alpha: 0.7)
         
         return v
     }()
@@ -49,7 +53,7 @@ class WordObjectDisplayVC: UIViewController {
     let originalWordLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = UIColor.rgb(148, 126, 33)
-        lbl.font = UIFont.boldSystemFont(ofSize: 20)
+        lbl.font = UIFont.boldSystemFont(ofSize: 36)
         
         return lbl
     }()
@@ -66,6 +70,22 @@ class WordObjectDisplayVC: UIViewController {
         let lbl = UILabel()
         lbl.textColor = UIColor.rgb(59, 85, 21)
         lbl.font = UIFont.systemFont(ofSize: 14)
+        
+        return lbl
+    }()
+    
+    let morphologyLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = UIColor.black
+        lbl.font = UIFont.systemFont(ofSize: 12)
+        
+        return lbl
+    }()
+    
+    let strongsNumberLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = UIColor.black
+        lbl.font = UIFont.systemFont(ofSize: 12)
         
         return lbl
     }()
@@ -87,6 +107,9 @@ class WordObjectDisplayVC: UIViewController {
         wordObjectContainerView.addSubview(originalWordLabel)
         originalWordLabel.anchor(top: wordObjectContainerView.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         originalWordLabel.centerXAnchor.constraint(equalTo: wordObjectContainerView.centerXAnchor).isActive = true
+        
+        wordObjectContainerView.addSubview(englishRenderedWordLabel)
+        englishRenderedWordLabel.anchor(top: originalWordLabel.bottomAnchor, left: wordObjectContainerView.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
     @objc func handleCancel() {
