@@ -16,7 +16,6 @@ class LoadBook: UICollectionViewController {
     var chapterArray = [[WordObject]]()
     var verseArray = [WordObject]()
     var greekTexts: String?
-    var verseCounter = 1
     var rawBookArray: Array<Any>?
     
     fileprivate func setupTextView() {
@@ -53,21 +52,10 @@ class LoadBook: UICollectionViewController {
         }
     }
     
-    fileprivate func getBookJSON(bookArray: Array<Any>) {
-        for object in bookArray {
-            guard let obj = object as? Array<Any> else { return }
-            print(obj[0])
-        }
-    }
-    
-    fileprivate func sortChapter(chapterNumber: Int) {
-        var chapterCounter = 1
-        if chapterNumber == chapterCounter {
-            
-        }
-    }
     
     fileprivate func sortVerse(verseNumber: Int, wordObject: WordObject) {
+        var verseCounter = 1
+        
         if verseNumber == verseCounter {
             self.verseArray.append(wordObject)
         } else if verseNumber > verseCounter {
@@ -79,6 +67,31 @@ class LoadBook: UICollectionViewController {
             self.bookChapterArray.append(chapterArray)
             self.chapterArray.removeAll()
             verseCounter = 1
+        }
+    }
+    
+    fileprivate func getBookJSON(bookArray: Array<Any>) {
+        for chapter in bookArray {
+            guard let chapterArray = chapter as? Array<Any> else { return }
+            
+            for verseArray in chapterArray {
+                guard let verse = verseArray as? Array<Any> else { return }
+                
+                let strongsNumber = verse[0] as! String
+                let morphology = verse[1] as! String
+                let verseChapter = verse[3] as! Int
+                let verseNumber = verse[4] as! Int
+                let originalWord = verse[6] as! String
+                let phonetic = verse[7] as! String
+                let englishWord = verse[8] as! String
+                let punctuation = verse[9] as! String
+                
+                let wordInfo = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: verseChapter, verseNumber: verseNumber, punctuation: punctuation, morphology: morphology)
+                
+                self.verseArray.append(wordInfo)
+                print(wordInfo)
+//                sortVerse(verseNumber: verseNumber, wordObject: wordInfo)
+            }
         }
     }
     
@@ -133,7 +146,6 @@ extension LoadBook: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! WordObjectCell
-        
 //        cell.wordObject = chapterArray[indexPath.item]
         
         return cell
