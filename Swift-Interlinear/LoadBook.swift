@@ -17,8 +17,7 @@ class LoadBook: UICollectionViewController {
     var verseArray = [WordObject]()
     var greekTexts: String?
     var verseCounter = 1
-    
-    var jsContext: JSContext!
+    var rawBookArray: Array<Any>?
     
     fileprivate func setupTextView() {
     }
@@ -30,52 +29,34 @@ class LoadBook: UICollectionViewController {
         collectionView.backgroundColor = .white
         
         self.initializeJS()
-        self.getBookJSON()
-        self.appendToMainText()
+        if let dataArray = rawBookArray {
+            self.getBookJSON(bookArray: dataArray)
+            //        self.appendToMainText()
+        }
+
     }
     
     fileprivate func initializeJS() {
-        self.jsContext = JSContext()
         
-        if let jsSourcePath = Bundle.main.path(forResource: "Matthew", ofType: "json") {
+        if let path = Bundle.main.path(forResource: "Mark", ofType: "json") {
             do {
-                let jsSourceContents = try String(contentsOfFile: jsSourcePath)
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 
-                self.jsContext.evaluateScript(jsSourceContents)
-            }
-            catch {
+                print(data)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves)
+                if let jsonResult = jsonResult as? Array<Any> {
+                    rawBookArray = jsonResult
+                }
+            } catch {
                 print(error.localizedDescription)
             }
         }
     }
     
-    fileprivate func getBookJSON() {
-        guard let variable = self.jsContext.objectForKeyedSubscript("matthewArray") else { return }
-        guard let variableAarry = variable.toArray() else { return }
-        
-        for index in 0...variableAarry.count - 1 {
-            for jsWordObject in (variable.atIndex(index)?.toArray())! {
-                guard let jsWordObjectArray = jsWordObject as? Array<Any> else { return }
-                
-                let originalWord = jsWordObjectArray[10] as! String
-                let englishWord = jsWordObjectArray[11] as! String
-                let phonetic = jsWordObjectArray[12] as! String
-                let strongsNumber = jsWordObjectArray[0] as! String
-                let morphology = jsWordObjectArray[1] as! String
-                let chapterNumber = jsWordObjectArray[8] as!  Int
-                let verseNumber = jsWordObjectArray[9] as! Int
-                let punctuation = jsWordObjectArray[13] as! String
-                
-                let wordObject = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: chapterNumber, verseNumber: verseNumber, punctuation: punctuation, morphology: morphology)
-//
-                if chapterNumber == chapterCounter {
-
-
-                } else if chapterNumber > chapterCounter {
-
-                }
-
-            }
+    fileprivate func getBookJSON(bookArray: Array<Any>) {
+        for object in bookArray {
+            guard let obj = object as? Array<Any> else { return }
+            print(obj[0])
         }
     }
     

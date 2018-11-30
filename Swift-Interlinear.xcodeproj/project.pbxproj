@@ -10,7 +10,7 @@
 		0917271E21A511A90095C804 /* WelcomePageFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0917271D21A511A90095C804 /* WelcomePageFour.swift */; };
 		0917272021A514870095C804 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0917271F21A514870095C804 /* MenuVC.swift */; };
 		0917272221A51AFE0095C804 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0917272121A51AFE0095C804 /* MenuCell.swift */; };
-		095973F621AF9EBB00A2C897 /* Matthew.json in Resources */ = {isa = PBXBuildFile; fileRef = 095973F521AF9EBB00A2C897 /* Matthew.json */; };
+		095973F821B0AD4600A2C897 /* Mark.json in Resources */ = {isa = PBXBuildFile; fileRef = 095973F721B0AD4600A2C897 /* Mark.json */; };
 		09B0C46521A9E716003BDC9F /* WordObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0C46421A9E716003BDC9F /* WordObject.swift */; };
 		09B0C46721A9E94C003BDC9F /* Verse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0C46621A9E94C003BDC9F /* Verse.swift */; };
 		09B0C46921A9EA16003BDC9F /* BookAndNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0C46821A9EA16003BDC9F /* BookAndNumbers.swift */; };
@@ -32,7 +32,7 @@
 		0917271D21A511A90095C804 /* WelcomePageFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageFour.swift; sourceTree = "<group>"; };
 		0917271F21A514870095C804 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		0917272121A51AFE0095C804 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
-		095973F521AF9EBB00A2C897 /* Matthew.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Matthew.json; sourceTree = "<group>"; };
+		095973F721B0AD4600A2C897 /* Mark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Mark.json; sourceTree = "<group>"; };
 		09B0C46421A9E716003BDC9F /* WordObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordObject.swift; sourceTree = "<group>"; };
 		09B0C46621A9E94C003BDC9F /* Verse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verse.swift; sourceTree = "<group>"; };
 		09B0C46821A9EA16003BDC9F /* BookAndNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAndNumbers.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		0917271A21A4FB790095C804 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				095973F521AF9EBB00A2C897 /* Matthew.json */,
+				095973F721B0AD4600A2C897 /* Mark.json */,
 				09B0C46821A9EA16003BDC9F /* BookAndNumbers.swift */,
 			);
 			path = Resources;
@@ -204,9 +204,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				095973F821B0AD4600A2C897 /* Mark.json in Resources */,
 				09C1A41521A0B3E800F5D2EE /* LaunchScreen.storyboard in Resources */,
 				09C1A41221A0B3E800F5D2EE /* Assets.xcassets in Resources */,
-				095973F621AF9EBB00A2C897 /* Matthew.json in Resources */,
 				09C1A41021A0B3E700F5D2EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
