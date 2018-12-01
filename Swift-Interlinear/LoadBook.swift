@@ -58,7 +58,7 @@ class LoadBook: UICollectionViewController {
 
             verseCounter = 1
             
-            for index in 0...chapterArray.count {
+            for index in 0...chapterArray.count - 1 {
                 guard let wordObject = chapterArray[index] as? Array<Any> else { return }
                 
                 let strongsNumber = wordObject[0] as! String
@@ -70,24 +70,21 @@ class LoadBook: UICollectionViewController {
                 let phonetic = wordObject[8] as! String
                 let punctuation = wordObject[9] as! String
                 
-                if index == 0 {
-                    let firstVerse = 1
-                    let wordInfo = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: verseChapter, verseNumber: firstVerse, punctuation: punctuation, morphology: morphology)
-                    
-                    allVersesArray.append(wordInfo)
-                }
-                
                 if verseNumber == verseCounter {
-                    let wordInfo = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: verseChapter, verseNumber: nil, punctuation: punctuation, morphology: morphology)
                     
-                    print(wordInfo.englishRendering)
-                    print(wordInfo.verseNumber)
-                    allVersesArray.append(wordInfo)
+                    if index == 0 {
+                        let firstVerse = 1
+                        let wordInfo = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: verseChapter, verseNumber: firstVerse, punctuation: punctuation, morphology: morphology)
+                        
+                        allVersesArray.append(wordInfo)
+                    } else {
+                        let wordInfo = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: verseChapter, verseNumber: nil, punctuation: punctuation, morphology: morphology)
+                        allVersesArray.append(wordInfo)
+                    }
+                    
                 } else if verseNumber > verseCounter {
                     verseCounter += 1
                     let wordInfo = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: verseChapter, verseNumber: verseNumber, punctuation: punctuation, morphology: morphology)
-                    print(wordInfo.englishRendering)
-                    print(wordInfo.verseNumber)
                     allVersesArray.append(wordInfo)
                 }
                 
@@ -97,7 +94,7 @@ class LoadBook: UICollectionViewController {
             
 //            for wordArray in chapterArray {
 //                guard let wordObject = wordArray as? Array<Any> else { return }
-//                
+//
 //                let strongsNumber = wordObject[0] as! String
 //                let morphology = wordObject[1] as! String
 //                let verseChapter = wordObject[4] as! Int
@@ -106,11 +103,11 @@ class LoadBook: UICollectionViewController {
 //                let englishWord = wordObject[7] as! String
 //                let phonetic = wordObject[8] as! String
 //                let punctuation = wordObject[9] as! String
-//                
-//                
+//
+//
 //                if verseNumber == verseCounter {
 //                    let wordInfo = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: verseChapter, verseNumber: nil, punctuation: punctuation, morphology: morphology)
-//                    
+//
 //                    print(wordInfo.englishRendering)
 //                    print(wordInfo.verseNumber)
 //                    allVersesArray.append(wordInfo)
@@ -191,11 +188,14 @@ extension LoadBook: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! WordObjectCell
         
+        print(allVersesArray[indexPath.item].verseNumber)
+        
         guard let bookArray = rawBookArray else { return cell }
         
         for index in 0...bookArray.count {
             if indexPath.section == index {
                 cell.wordObject = allVersesArray[indexPath.item]
+
             }
         }
         
