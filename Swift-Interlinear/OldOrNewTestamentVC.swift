@@ -41,6 +41,7 @@ class OldOrNewTestamentVC: UIViewController {
         oldTestamentLabel.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 150, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 0)
         oldTestamentLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         oldTestamentLabel.addGestureRecognizer(oldTap)
+        oldTestamentLabel.isUserInteractionEnabled = true
 
         
         let newTap = UITapGestureRecognizer(target: self, action: #selector(handleNewTapped))
@@ -48,14 +49,23 @@ class OldOrNewTestamentVC: UIViewController {
         newTestamentLabel.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 40, paddingBottom: 150, paddingRight: 40, width: 0, height: 0)
         newTestamentLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         newTestamentLabel.addGestureRecognizer(newTap)
+        newTestamentLabel.isUserInteractionEnabled = true
     }
     
     @objc func handleOldTapped() {
-        print("tapped old")
+        let testament = "old"
+        let menuVC = MenuVC()
+        menuVC.testament = testament
+        self.present(UINavigationController(rootViewController: menuVC), animated: true, completion: nil)
     }
     
     @objc func handleNewTapped() {
-         print("tapped new")
+        let testament = "new"
+        let menuVC = MenuVC()
+        menuVC.testament = testament
+         self.present(UINavigationController(rootViewController: menuVC), animated: true, completion: nil)
+        
+        
     }
     
 }

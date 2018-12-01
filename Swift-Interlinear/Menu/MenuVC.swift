@@ -10,14 +10,21 @@ import UIKit
 
 class MenuVC: UIViewController {
     
-    let menuArray = BookAndNumbers.books
+    var menuArray = [String]()
     var menuTableView: UITableView!
+    var testament: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if testament == "old" {
+            navigationItem.title = "Old Testament"
+        } else if testament == "new" {
+            navigationItem.title = "New Testament"
+        }
+        
         view.backgroundColor = .white
-        navigationItem.title = "The Scriptures"
+        loadBooks(testament: testament)
         
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         let displayWidth: CGFloat = self.view.frame.width
@@ -37,6 +44,23 @@ class MenuVC: UIViewController {
         let index = NSIndexPath(item: 0, section: 0)
         let cell = menuTableView.cellForRow(at: index as IndexPath)
         print("this is the text label: \(String(describing: cell?.textLabel?.text))")
+    }
+    
+    fileprivate func loadBooks(testament: String) {
+        let testamentArray = BookAndNumbers.books
+        let newTestamentArrayCount = testamentArray.count - 1
+        let oldTestamentArrayCount = 37
+        
+        if testament == "old" {
+            for index in 0...oldTestamentArrayCount {
+                menuArray.append(testamentArray[index])
+            }
+        } else if testament == "new" {
+            for index in 38...newTestamentArrayCount {
+                menuArray.append(testamentArray[index])
+            }
+        }
+
     }
 
 }
