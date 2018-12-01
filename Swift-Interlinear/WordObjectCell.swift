@@ -9,21 +9,31 @@
 import UIKit
 
 class WordObjectCell: UICollectionViewCell {
-    
+
     var wordObject: WordObject? {
         didSet {
             guard let originalWord = wordObject?.greekOrHebrewWord else { return }
             guard let englishWord = wordObject?.englishRendering else { return }
             guard let phonetic = wordObject?.phonetic else { return }
-
             
             originalWordLabel.text = originalWord
             phoneticLabel.text = phonetic
             englishRenderedWordLabel.text = englishWord
             
+            guard let verseNumber = wordObject?.verseNumber else { return }
             
+            verseNumberLabel.text = "\(verseNumber)"
         }
     }
+    
+    let verseNumberLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = UIColor.black
+        lbl.font = UIFont.boldSystemFont(ofSize: 12)
+        lbl.text = ""
+        
+        return lbl
+    }()
     
     let originalWordLabel: UILabel = {
        let lbl = UILabel()
@@ -52,6 +62,9 @@ class WordObjectCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.addSubview(verseNumberLabel)
+        verseNumberLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         self.addSubview(originalWordLabel)
         originalWordLabel.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)

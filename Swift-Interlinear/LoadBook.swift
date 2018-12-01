@@ -12,9 +12,8 @@ import JavaScriptCore
 private let reuseIdentifier = "Cell"
 
 class LoadBook: UICollectionViewController {
-    var bookChapterArray = [[[WordObject]]]()
-    var chapterArray = [[WordObject]]()
-    var verseArray = [WordObject]()
+    var chapterCount = 0
+    var allVersesArray = [WordObject]()
     var greekTexts: String?
     var rawBookArray: Array<Any>?
     
@@ -40,8 +39,6 @@ class LoadBook: UICollectionViewController {
         if let path = Bundle.main.path(forResource: "Mark", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                
-                print(data)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves)
                 if let jsonResult = jsonResult as? Array<Any> {
                     rawBookArray = jsonResult
@@ -52,64 +49,98 @@ class LoadBook: UICollectionViewController {
         }
     }
     
-    
-    fileprivate func sortVerse(verseNumber: Int, wordObject: WordObject) {
-        var verseCounter = 1
-        
-        if verseNumber == verseCounter {
-            self.verseArray.append(wordObject)
-        } else if verseNumber > verseCounter {
-            self.chapterArray.append(verseArray)
-            self.verseArray.removeAll()
-            verseCounter += 1
-            self.verseArray.append(wordObject)
-        } else if verseNumber < verseCounter {
-            self.bookChapterArray.append(chapterArray)
-            self.chapterArray.removeAll()
-            verseCounter = 1
-        }
-    }
-    
     fileprivate func getBookJSON(bookArray: Array<Any>) {
+        var verseCounter = 1
+        chapterCount = bookArray.count
+        
         for chapter in bookArray {
             guard let chapterArray = chapter as? Array<Any> else { return }
+
+            verseCounter = 1
             
-            for verseArray in chapterArray {
-                guard let verse = verseArray as? Array<Any> else { return }
+            for index in 0...chapterArray.count {
+                guard let wordObject = chapterArray[index] as? Array<Any> else { return }
                 
-                let strongsNumber = verse[0] as! String
-                let morphology = verse[1] as! String
-                let verseChapter = verse[3] as! Int
-                let verseNumber = verse[4] as! Int
-                let originalWord = verse[6] as! String
-                let phonetic = verse[7] as! String
-                let englishWord = verse[8] as! String
-                let punctuation = verse[9] as! String
+                let strongsNumber = wordObject[0] as! String
+                let morphology = wordObject[1] as! String
+                let verseChapter = wordObject[4] as! Int
+                let verseNumber = wordObject[5] as! Int
+                let originalWord = wordObject[6] as! String
+                let englishWord = wordObject[7] as! String
+                let phonetic = wordObject[8] as! String
+                let punctuation = wordObject[9] as! String
                 
-                let wordInfo = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: verseChapter, verseNumber: verseNumber, punctuation: punctuation, morphology: morphology)
+                if index == 0 {
+                    let firstVerse = 1
+                    let wordInfo = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: verseChapter, verseNumber: firstVerse, punctuation: punctuation, morphology: morphology)
+                    
+                    allVersesArray.append(wordInfo)
+                }
                 
-                self.verseArray.append(wordInfo)
-                print(wordInfo)
-//                sortVerse(verseNumber: verseNumber, wordObject: wordInfo)
+                if verseNumber == verseCounter {
+                    let wordInfo = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: verseChapter, verseNumber: nil, punctuation: punctuation, morphology: morphology)
+                    
+                    print(wordInfo.englishRendering)
+                    print(wordInfo.verseNumber)
+                    allVersesArray.append(wordInfo)
+                } else if verseNumber > verseCounter {
+                    verseCounter += 1
+                    let wordInfo = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: verseChapter, verseNumber: verseNumber, punctuation: punctuation, morphology: morphology)
+                    print(wordInfo.englishRendering)
+                    print(wordInfo.verseNumber)
+                    allVersesArray.append(wordInfo)
+                }
+                
+                
+                
             }
+            
+//            for wordArray in chapterArray {
+//                guard let wordObject = wordArray as? Array<Any> else { return }
+//                
+//                let strongsNumber = wordObject[0] as! String
+//                let morphology = wordObject[1] as! String
+//                let verseChapter = wordObject[4] as! Int
+//                let verseNumber = wordObject[5] as! Int
+//                let originalWord = wordObject[6] as! String
+//                let englishWord = wordObject[7] as! String
+//                let phonetic = wordObject[8] as! String
+//                let punctuation = wordObject[9] as! String
+//                
+//                
+//                if verseNumber == verseCounter {
+//                    let wordInfo = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: verseChapter, verseNumber: nil, punctuation: punctuation, morphology: morphology)
+//                    
+//                    print(wordInfo.englishRendering)
+//                    print(wordInfo.verseNumber)
+//                    allVersesArray.append(wordInfo)
+//                } else if verseNumber > verseCounter {
+//                    verseCounter += 1
+//                    let wordInfo = WordObject(greekOrHebrewWord: originalWord, phonetic: phonetic, strongsNumber: strongsNumber, englishRendering: englishWord, verseChapter: verseChapter, verseNumber: verseNumber, punctuation: punctuation, morphology: morphology)
+//                    print(wordInfo.englishRendering)
+//                    print(wordInfo.verseNumber)
+//                    allVersesArray.append(wordInfo)
+//                }
+//            }
         }
+        collectionView.reloadData()
     }
     
     fileprivate func appendToMainText() {
-        var totalText = [String]()
-        for chapter in bookChapterArray {
-            for verse in chapter {
-                for wordObject in verse {
-                    totalText.append("\(wordObject) ")
-                }
-            }
-        }
+        _ = [String]()
     }
 }
 
 extension LoadBook: UICollectionViewDelegateFlowLayout {
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+        return 1
+//        return chapterCount
+    }
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return chapterArray.count
+        return allVersesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -126,27 +157,50 @@ extension LoadBook: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         var width = 100
-//        let item = chapterArray[indexPath.item]
-//        let originalWordWidth = item.greekOrHebrewWord.width(withConstrainedHeight: 14, font: UIFont.systemFont(ofSize: 14))
-//        let englishWordWidth = item.englishRendering.width(withConstrainedHeight: 12, font: UIFont.systemFont(ofSize: 12))
-//        let phoneticWordWidth = item.phonetic.width(withConstrainedHeight: 12, font: UIFont.systemFont(ofSize: 12))
-//
-//        if originalWordWidth >= englishWordWidth && originalWordWidth >= phoneticWordWidth {
-//            width = Int(originalWordWidth)
-//        } else if englishWordWidth >= originalWordWidth && englishWordWidth >= phoneticWordWidth {
-//            width = Int(englishWordWidth)
-//        } else if phoneticWordWidth >= originalWordWidth && phoneticWordWidth >= englishWordWidth {
-//            width = Int(phoneticWordWidth)
-//        }
         
+        let item = allVersesArray[indexPath.item]
+        let originalWordWidth = item.greekOrHebrewWord.width(withConstrainedHeight: 14, font: UIFont.systemFont(ofSize: 14))
+        let englishWordWidth = item.englishRendering.width(withConstrainedHeight: 12, font: UIFont.systemFont(ofSize: 12))
+        let phoneticWordWidth = item.phonetic.width(withConstrainedHeight: 12, font: UIFont.systemFont(ofSize: 12))
+        
+        if originalWordWidth >= englishWordWidth && originalWordWidth >= phoneticWordWidth {
+            width = Int(originalWordWidth) + 25
+        } else if englishWordWidth >= originalWordWidth && englishWordWidth >= phoneticWordWidth {
+            width = Int(englishWordWidth)
+            
+            if width <= 35 {
+                width += 20
+            } else {
+                width = Int(englishWordWidth)
+            }
+            
+        } else if phoneticWordWidth >= originalWordWidth && phoneticWordWidth >= englishWordWidth {
+            width = Int(phoneticWordWidth)
+            if width <= 35 {
+                width += 20
+            } else {
+                width = Int(phoneticWordWidth)
+            }
+            
+        }
+    
         let size = CGSize(width: width, height: 60)
-
         return size
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! WordObjectCell
-//        cell.wordObject = chapterArray[indexPath.item]
+        
+        guard let bookArray = rawBookArray else { return cell }
+        
+        for index in 0...bookArray.count {
+            if indexPath.section == index {
+                cell.wordObject = allVersesArray[indexPath.item]
+            }
+        }
+        
+        
+        cell.wordObject = allVersesArray[indexPath.item]
         
         return cell
     }
