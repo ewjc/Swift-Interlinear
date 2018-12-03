@@ -11,6 +11,7 @@ import UIKit
 class MenuVC: UIViewController {
     
     var menuArray = [String]()
+    var rawBookArray: Array<Any>?
     var menuTableView: UITableView!
     var testament: String!
 
@@ -60,38 +61,64 @@ class MenuVC: UIViewController {
                 menuArray.append(testamentArray[index])
             }
         }
-
     }
-
+    
+    fileprivate func initializeJS(book: String) {
+        if let path = Bundle.main.path(forResource: book, ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves)
+                if let jsonResult = jsonResult as? Array<Any> {
+                    rawBookArray = jsonResult
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension MenuVC: UITableViewDataSource, UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let btn = UIButton()
+        btn.setTitle("Hello", for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
+        btn.tintColor = UIColor.darkGray
+        btn.backgroundColor = UIColor.blue
+        
+        return btn
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0 {
-//            return 1
-//        } else {
-//            return menuArray.count
-//        }
-        
-        return menuArray.count
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("this is the item you selected: \(menuArray[indexPath.row])")
+        initializeJS(book: menuArray[indexPath.row])
+        var currentChapterCount = 1
+        if let rawArray = rawBookArray {
+            currentChapterCount = rawArray.count
+            print("current chapter: \(currentChapterCount)")
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath)
         
-        let tapBookTitle = UITapGestureRecognizer(target: self, action: #selector(handleBookTapped))
-        
         cell.textLabel?.text = menuArray[indexPath.row]
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         cell.textLabel?.textColor = UIColor.darkGray
-        cell.textLabel?.addGestureRecognizer(tapBookTitle)
-        cell.textLabel?.isUserInteractionEnabled = true
-        
+
         return cell
     }
     

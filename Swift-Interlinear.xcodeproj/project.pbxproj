@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		090A7CA821B34AAD00238747 /* OldOrNewTestamentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090A7CA721B34AAD00238747 /* OldOrNewTestamentVC.swift */; };
-		090A7CAA21B34ECA00238747 /* NewTestamentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090A7CA921B34ECA00238747 /* NewTestamentVC.swift */; };
 		0917271E21A511A90095C804 /* WelcomePageFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0917271D21A511A90095C804 /* WelcomePageFour.swift */; };
 		0917272021A514870095C804 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0917271F21A514870095C804 /* MenuVC.swift */; };
 		0917272221A51AFE0095C804 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0917272121A51AFE0095C804 /* MenuCell.swift */; };
@@ -32,7 +31,6 @@
 
 /* Begin PBXFileReference section */
 		090A7CA721B34AAD00238747 /* OldOrNewTestamentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldOrNewTestamentVC.swift; sourceTree = "<group>"; };
-		090A7CA921B34ECA00238747 /* NewTestamentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTestamentVC.swift; sourceTree = "<group>"; };
 		0917271D21A511A90095C804 /* WelcomePageFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageFour.swift; sourceTree = "<group>"; };
 		0917271F21A514870095C804 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		0917272121A51AFE0095C804 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 				09C1A41321A0B3E800F5D2EE /* LaunchScreen.storyboard */,
 				09C1A41621A0B3E800F5D2EE /* Info.plist */,
 				090A7CA721B34AAD00238747 /* OldOrNewTestamentVC.swift */,
-				090A7CA921B34ECA00238747 /* NewTestamentVC.swift */,
 			);
 			path = "Swift-Interlinear";
 			sourceTree = "<group>";
@@ -238,7 +235,6 @@
 				0917271E21A511A90095C804 /* WelcomePageFour.swift in Sources */,
 				090A7CA821B34AAD00238747 /* OldOrNewTestamentVC.swift in Sources */,
 				09C1A42421A1021900F5D2EE /* WelcomePageTwo.swift in Sources */,
-				090A7CAA21B34ECA00238747 /* NewTestamentVC.swift in Sources */,
 				09C1A40B21A0B3E700F5D2EE /* AppDelegate.swift in Sources */,
 				09B0C46F21AE87CA003BDC9F /* WordObjectDisplayVC.swift in Sources */,
 			);
