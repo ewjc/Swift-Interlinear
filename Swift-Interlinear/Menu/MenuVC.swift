@@ -14,6 +14,7 @@ class MenuVC: UIViewController {
     var rawBookArray: Array<Any>?
     var menuTableView: UITableView!
     var testament: String!
+    var storedOffsets = [Int: CGFloat]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class MenuVC: UIViewController {
         
         menuTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
         
-        menuTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MenuCell")
+        menuTableView.register(MenuCell.self, forCellReuseIdentifier: "MenuCell")
         menuTableView.delegate = self
         menuTableView.dataSource = self
         view.addSubview(menuTableView)
@@ -90,7 +91,7 @@ extension MenuVC: UITableViewDataSource, UITableViewDelegate {
         btn.addTarget(self, action: #selector(handleChapterTapped), for: .touchUpInside)
         btn.isUserInteractionEnabled = true
         btn.tag = section
-        
+
         return btn
     }
     
@@ -112,38 +113,61 @@ extension MenuVC: UITableViewDataSource, UITableViewDelegate {
         
         
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let menuCell = cell as? MenuCell else { return }
+        menuCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        guard let tableViewCell = cell as? MenuCell else { return }
+        
+        storedOffsets[indexPath.row] = tableViewCell.collectionViewOffset
+    }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 25
+        return 45
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return menuArray.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("this is the item you selected: \(menuArray[indexPath.row])")
-//        initializeJS(book: menuArray[indexPath.row])
-//        var currentChapterCount = 1
-//        if let rawArray = rawBookArray {
-//            currentChapterCount = rawArray.count
-//            print("current chapter: \(currentChapterCount)")
-//        }
-//    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath)
-        
-        cell.textLabel?.text = menuArray[indexPath.row]
-        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 24)
-        cell.textLabel?.textColor = UIColor.darkGray
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
+//
+//        cell.textLabel?.text = menuArray[indexPath.row]
+//        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 24)
+//        cell.textLabel?.textColor = UIColor.darkGray
 
         return cell
     }
     
     
+}
+
+extension MenuVC: UICollectionViewDelegate, UICollectionViewDataSource {
+
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+
+        
+        cell.backgroundColor = .blue
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Collection view at row \(collectionView.tag) selected index path \(indexPath)")
+    }
 }

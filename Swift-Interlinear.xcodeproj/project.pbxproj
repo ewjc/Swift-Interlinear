@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		090A7CA821B34AAD00238747 /* OldOrNewTestamentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090A7CA721B34AAD00238747 /* OldOrNewTestamentVC.swift */; };
+		090A7CAE21B65DC900238747 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090A7CAD21B65DC900238747 /* MenuTableViewController.swift */; };
 		0917271E21A511A90095C804 /* WelcomePageFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0917271D21A511A90095C804 /* WelcomePageFour.swift */; };
 		0917272021A514870095C804 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0917271F21A514870095C804 /* MenuVC.swift */; };
 		0917272221A51AFE0095C804 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0917272121A51AFE0095C804 /* MenuCell.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		090A7CA721B34AAD00238747 /* OldOrNewTestamentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldOrNewTestamentVC.swift; sourceTree = "<group>"; };
+		090A7CAD21B65DC900238747 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		0917271D21A511A90095C804 /* WelcomePageFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageFour.swift; sourceTree = "<group>"; };
 		0917271F21A514870095C804 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		0917272121A51AFE0095C804 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				0917271F21A514870095C804 /* MenuVC.swift */,
 				0917272121A51AFE0095C804 /* MenuCell.swift */,
+				090A7CAD21B65DC900238747 /* MenuTableViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				09C1A42021A0FAEC00F5D2EE /* WelcomePageOne.swift in Sources */,
 				0917272021A514870095C804 /* MenuVC.swift in Sources */,
 				0917272221A51AFE0095C804 /* MenuCell.swift in Sources */,
+				090A7CAE21B65DC900238747 /* MenuTableViewController.swift in Sources */,
 				0917271E21A511A90095C804 /* WelcomePageFour.swift in Sources */,
 				090A7CA821B34AAD00238747 /* OldOrNewTestamentVC.swift in Sources */,
 				09C1A42421A1021900F5D2EE /* WelcomePageTwo.swift in Sources */,
