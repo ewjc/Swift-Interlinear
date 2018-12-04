@@ -82,12 +82,35 @@ extension MenuVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let btn = UIButton()
-        btn.setTitle("Hello", for: .normal)
+        
+        btn.setTitle(menuArray[section], for: .normal)
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         btn.tintColor = UIColor.darkGray
         btn.backgroundColor = UIColor.blue
+        btn.addTarget(self, action: #selector(handleChapterTapped), for: .touchUpInside)
+        btn.isUserInteractionEnabled = true
+        btn.tag = section
         
         return btn
+    }
+    
+    @objc func handleChapterTapped(button: UIButton) {
+        let buttonTag = button.tag
+        
+        print(menuArray[buttonTag])
+        initializeJS(book: menuArray[buttonTag])
+        guard let bookArray = rawBookArray else { return }
+        
+//        let section = 0
+//        var indexPaths = IndexPath()
+//
+//        for row in menuArray.indices {
+//            print(0, row)
+//            let indexPath = IndexPath(row: row, section: 0)
+//            indexPaths.append(indexPath)
+//        }
+        
+        
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -102,15 +125,15 @@ extension MenuVC: UITableViewDataSource, UITableViewDelegate {
         return 3
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("this is the item you selected: \(menuArray[indexPath.row])")
-        initializeJS(book: menuArray[indexPath.row])
-        var currentChapterCount = 1
-        if let rawArray = rawBookArray {
-            currentChapterCount = rawArray.count
-            print("current chapter: \(currentChapterCount)")
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("this is the item you selected: \(menuArray[indexPath.row])")
+//        initializeJS(book: menuArray[indexPath.row])
+//        var currentChapterCount = 1
+//        if let rawArray = rawBookArray {
+//            currentChapterCount = rawArray.count
+//            print("current chapter: \(currentChapterCount)")
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath)
